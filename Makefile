@@ -1,10 +1,18 @@
 CC = clang
 
-sqrt_main: sqrt_main.o sqrt_lib.o
-	$(CC) sqrt_main.o sqrt_lib.o -o sqrt_main
+all: send_emails
 
-sqrt_main.o: sqrt_main.c sqrt_lib.h
-	$(CC) -c sqrt_main.c
+send_emails: send_emails_main.o network.o emails.o
+	$(CC) send_emails_main.o network.o emails.o -o send_emails
 
-sqrt_lib.o: sqrt_lib.c sqrt_lib.h
-	$(CC) -c sqrt_lib.c
+network.o: network.c network.h
+	$(CC) -c network.c
+
+emails.o: emails.c network.h
+	$(CC) -c emails.c
+
+send_emails_main.o: send_emails_main.c emails.h
+	$(CC) -c send_emails_main.c
+
+clean:
+	rm -rf send_emails emails.o send_emails_main.o network.o
