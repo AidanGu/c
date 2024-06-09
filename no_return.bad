@@ -1,0 +1,10 @@
+FUNCTION failure
+set 27 foo
+# RETURN foo
+
+FUNCTION main
+
+call failure result
+
+SET 2 a
+RETURN a
