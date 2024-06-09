@@ -1,0 +1,3 @@
+FUNCTION main
+SET 2 a
+RETURN a
