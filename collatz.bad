@@ -1,0 +1,36 @@
+FUNCTION collatz_steps
+
+set 0 num_steps
+set 1 one
+set arg0 current
+
+LABEL top
+
+# if it's 1, then return
+ALMOSTEQUAL 1 current isitone
+if isitone its_one not_one
+
+LABEL not_one
+
+MOD current 2 its_odd
+IF its_odd times_three_plus_one divide_by_two
+
+LABEL times_three_plus_one
+MUL current 3 current
+ADD current 1 current
+
+ADD num_steps 1 num_steps
+IF one top top
+
+LABEL divide_by_two
+DIV current 2 current
+ADD num_steps 1 num_steps
+IF one top top
+
+LABEL its_one
+
+RETURN num_steps
+
+FUNCTION main
+CALL collatz_steps 7 output
+RETURN output
