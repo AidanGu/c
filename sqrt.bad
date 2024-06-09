@@ -1,0 +1,20 @@
+FUNCTION sqrt
+
+DIV arg0 2 current
+
+LABEL again
+DIV arg0 current x_over_current
+
+ADD x_over_current current together
+DIV together 2 current
+
+ALMOSTEQUAL current x_over_current close_enough
+IF close_enough done again
+
+LABEL done
+RETURN current
+
+
+FUNCTION main
+CALL sqrt 49 out
+RETURN out
