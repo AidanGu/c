@@ -1,0 +1,23 @@
+FUNCTION fac
+
+ALMOSTEQUAL arg0 0 equalzero
+IF equalzero return_one keepgoing
+
+LABEL keepgoing
+ALMOSTEQUAL arg0 1 equalone
+IF equalone return_one recurse
+
+LABEL recurse
+SUB arg0 1 oneless
+CALL fac oneless recursive_answer
+
+MUL arg0 recursive_answer my_answer
+RETURN my_answer
+
+LABEL return_one
+RETURN 1
+
+
+FUNCTION main
+CALL fac 6 out
+RETURN out
