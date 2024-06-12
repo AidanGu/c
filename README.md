@@ -1,2 +1,2 @@
 # c
-practice in c from Comp Sys and C Program
+CSE 13S Comp Sys and C Program Practice
